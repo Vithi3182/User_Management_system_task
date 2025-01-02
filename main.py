@@ -70,12 +70,12 @@ def list_all_user():
 def delete_user():
     data = pd.read_csv("user.csv")
     unique_id = int(input("Enter ur id : "))
-    if unique_id not in data:
+    if unique_id not in data["unique_id"].values:
         print("User not found")
-
-    user = data[data['unique_id']!=unique_id]
-    user.to_csv("user.csv",index = False)
-    print("User deleted successfully")
+    else:    
+        user = data[data['unique_id']!=unique_id]
+        user.to_csv("user.csv",index = False)
+        print("User deleted successfully")
 
 def search_user():
     data = pd.read_csv("user.csv")
